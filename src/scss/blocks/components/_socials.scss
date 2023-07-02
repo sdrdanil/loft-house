@@ -1,0 +1,45 @@
+.socials {
+  display: flex;
+  gap: 22px;
+
+  &__link {
+    display: inline-block;
+    @extend %mask-svg;
+    --mask-svg-size: cover;
+    background: $color-white;
+    transition: .2s ease-out;
+    cursor: pointer;
+
+    &:hover {
+      background: $color-accent;
+    }
+
+    &:focus-visible {
+      background: $color-accent;
+    }
+
+    &--youtube {
+      --mask-svg-url: url('@img/icons.svg#youtube');
+      width: 30px;
+      height: 20px;
+    }
+
+    &--vk {
+      --mask-svg-url: url('@img/icons.svg#vk');
+      width: 37px;
+      height: 20px;
+    }
+
+    &--facebook {
+      --mask-svg-url: url('@img/icons.svg#facebook');
+      width: 21px;
+      height: 20px;
+    }
+
+    &--instagram {
+      --mask-svg-url: url('@img/icons.svg#instagram');
+      width: 21px;
+      height: 20px;
+    }
+  }
+}

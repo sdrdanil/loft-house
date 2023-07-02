@@ -1,0 +1,78 @@
+.section-map {
+  padding-top: 180px;
+
+  &__inner {
+    position: relative;
+
+    @include add-decor-number('V', left) {
+      --decor-number-translateY: -36px;
+    };
+  }
+
+  &__title {
+    @extend %title;
+    margin-bottom: 88px;
+  }
+
+  &__map {
+    position: relative;
+    // width: 1110px;
+    // aspect-ratio: 1110 / 358;
+    height: 358px;
+    background-color: #626262;
+    background-image: url('@img/map-preview.jpg');
+    background-repeat: no-repeat;
+    background-size: 1110px 358px;
+    background-position: center;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-color: black;
+      opacity: 0;
+      transition: .2s;
+    }
+
+    &--active {
+      &::before {
+        opacity: .5;
+      }
+
+      &::after {
+        --size: 50px;
+        --stroke: 8px;
+        content: '';
+        position: absolute;
+        left: calc(50% - var(--size) / 2);
+        top: calc(50% - var(--size) / 2);
+        width: var(--size);
+        aspect-ratio: 1 / 1;
+        border: var(--stroke) solid white;
+        border-top-color: transparent;
+        border-radius: 50%;
+        animation: rotate 2s linear infinite;
+      }
+    }
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@include breakpoint-down(lg) {
+  .section-map {
+    padding-top: 18vw;
+
+    &__title {
+      margin-bottom: 9vw;
+    }
+  }
+}

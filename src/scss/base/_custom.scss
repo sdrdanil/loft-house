@@ -1,0 +1,44 @@
+// Yandex Map
+[class*="copyrights-pane"] {
+  opacity: 0;
+  transition: opacity .2s ease-in;
+}
+
+.map:hover [class*="copyrights-pane"] {
+  opacity: 1;
+}
+
+[class*="gototech"] {
+  display: none !important;
+}
+
+[class*="ground-pane"] {
+  filter: grayscale(1) sepia(10%);
+}
+
+
+[class*="balloon__layout"],
+[class*="balloon__content"] {
+  background-color: $color-dark !important;
+  color: $color-white !important;
+}
+
+[class*="balloon__tail"]::after {
+  background-color: $color-dark !important;
+}
+
+[class*="balloon_layout_panel"] {
+  background-color: $color-dark !important;
+}
+
+[class*="balloon__layout"],
+[class*="balloon__content"] a {
+  color: $color-accent !important;
+}
+
+[class*="balloon__close-button"] {
+  background: url('@img/icons.svg#cross') 50% no-repeat !important;
+  width: 15px !important;
+  height: 15px !important;
+  margin: 10px 7px;
+}

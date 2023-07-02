@@ -1,0 +1,94 @@
+$breakpoint-custom: 1160px;
+
+$color-dark: #242B33;
+$color-accent: #D4C17F;
+$color-white: #FFFFFF;
+$color-muted: #E7E7E7;
+$color-placeholder: #BEBEBE;
+$color-placeholder: #BEBEBE;
+$color-background-accent: #2D343C;
+
+$global-columns-gap: 30px;
+
+$link-transition: .3s ease;
+
+%font-main-400 {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+}
+
+%font-main-700 {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 700;
+}
+
+%font-accent {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 700;
+}
+
+%font-secondary {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+}
+
+%title {
+  @extend %font-accent;
+  font-size: 36px;
+  line-height: 1.33;
+  color: $color-accent;
+
+  @include breakpoint-down(lg) {
+    font-size: 32px;
+  }
+
+  @include breakpoint-down(sm) {
+    font-size: 28px;
+  }
+
+  // @include breakpoint-down(380) {
+  //   font-size: 28px;
+  // }
+}
+
+@mixin add-decor-number($content, $align) {
+  --decor-number-translateY: 0;
+  --decor-number-offset-x: 0%;
+
+  &::after {
+    content: $content;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    @extend %font-accent;
+    font-size: 400px;
+    color: $color-white;
+    opacity: .02;
+
+    @if $align ==left {
+      left: 0;
+      transform: translate(calc(-50% - var(--decor-number-offset-x)), var(--decor-number-translateY));
+      // transform: translate(-50%, var(--decor-number-translateY));
+    }
+
+    @if $align ==right {
+      right: 0;
+      transform: translate(calc(50% + var(--decor-number-offset-x)), var(--decor-number-translateY));
+      // transform: translate(50%, var(--decor-number-translateY));
+    }
+
+    @include breakpoint-down(sm) {
+      font-size: 85vw;
+    }
+
+    @content;
+  }
+
+  @include breakpoint-down(xl) {
+    --decor-number-offset-x: -20%;
+  }
+}

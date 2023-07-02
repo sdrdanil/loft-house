@@ -1,0 +1,149 @@
+.header {
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  padding-top: 30px;
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__nav-list {
+    display: flex;
+    gap: 40px;
+  }
+
+  &__link {
+    @extend %font-main-400;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.05em;
+  }
+
+  &__nav-button {
+    display: none;
+  }
+}
+
+// Nav Button
+.header__nav-button {
+  --time: 0.1s;
+  --width: 40px;
+  --height: 30px;
+  --line-height: 1px;
+  --line-margin: 2;
+  --color: #fff;
+
+  height: var(--height);
+  width: var(--width);
+
+  &:focus-visible {
+    outline: 2px solid whitesmoke;
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+}
+
+.header__nav-icon {
+  position: relative;
+  display: block;
+  width: var(--width);
+  height: var(--line-height);
+  background-color: var(--color);
+
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    width: var(--width);
+    height: var(--line-height);
+    background-color: var(--color);
+    transition: transform var(--time) ease-in,
+      top var(--time) linear var(--time);
+  }
+
+  &::before {
+    top: calc(var(--line-height) * -8);
+  }
+
+  &::after {
+    top: calc(var(--line-height) * 8);
+  }
+}
+
+.header--active .header__nav-icon {
+  background-color: transparent;
+
+  &::before,
+  &::after {
+    top: 0;
+    transition: top var(--time) linear,
+      transform var(--time) ease-in var(--time);
+  }
+
+  &::before {
+    transform: rotate(45deg);
+  }
+  
+  &::after {
+    transform: rotate(-45deg);
+  }
+}
+
+
+// Media
+@include breakpoint-down(lg) {
+  .header__nav-list {
+    column-gap: 28px;
+  }
+}
+
+@include breakpoint-down(md) {
+  .header {
+    &__nav-list {
+      display: none;
+      row-gap: 32px;
+    }
+
+    &__nav-button {
+      display: block;
+    }
+
+    &__link {
+      font-size: 18px;
+    }
+  }
+
+  .header--active {
+    .header__inner {
+      // display: block;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      padding-top: 70px;
+      background: $color-background-accent;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 40px;
+    }
+
+    .header__nav-list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .header__nav-button {
+      position: absolute;
+      right: 20px;
+      top: 50px;
+    }
+  }
+}

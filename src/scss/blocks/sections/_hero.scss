@@ -1,0 +1,131 @@
+@mixin add-svg-icon($url) {
+  &::before {
+    @extend %mask-svg;
+    --mask-svg-url: #{$url};
+
+    content: '';
+    display: inline-block;
+    width: 21px;
+    height: 21px;
+    background-color: $color-white;
+    transition: background-color $link-transition;
+  }
+
+  &:hover::before {
+    background-color: $color-accent;
+  }
+}
+
+.hero {
+  position: relative;
+  // min-height: 840px;
+  padding: 296px 0 76px;
+  background-image:
+    linear-gradient(180deg,
+      $color-dark 11.98%,
+      rgba($color-background-accent, 0.38) 51.04%,
+      $color-dark 92.19%),
+    url('@img/header.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+
+
+  &__inner {
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+  }
+
+  &__title {
+    @extend %font-accent;
+    max-width: 556px;
+    margin: 0 auto;
+    font-size: 48px;
+    line-height: 1.33;
+    color: $color-accent;
+    text-align: center;
+    margin-bottom: 81px;
+  }
+
+  &__mouse {
+    width: 24px;
+    height: 40px;
+    margin: 0 auto 200px;
+    display: block;
+    background-image: url('@img/icons.svg#mouse');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  &__contacts {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+
+  &__link {
+    @extend %font-main-400;
+    margin: 0 35px;
+    font-size: 18px;
+    line-height: 1.17;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+
+    &--place {
+      justify-self: end;
+      @include add-svg-icon(url('@img/icons.svg#placeholder'));
+    }
+
+    &--tel {
+      justify-self: start;
+      @include add-svg-icon(url('@img/icons.svg#phone-call'));
+    }
+  }
+}
+
+@include breakpoint-down(md) {
+  .hero {
+    padding-top: 210px;
+
+    &__main {
+      max-width: 85%;
+      transform: translateY(-65px);
+    }
+
+    &__title {
+      font-size: 40px;
+      margin-bottom: 60px;
+    }
+
+    &__mouse {
+      margin-bottom: 145px;
+    }
+
+    &__contacts {
+      grid-template-columns: 1fr;
+    }
+
+    &__link {
+      font-size: 16px;
+
+      &--place {
+        justify-self: center;
+      }
+  
+      &--tel {
+        justify-self: center;
+      }
+    }
+  }
+}
+
+@include breakpoint-down(400) {
+  .hero__title {
+    font-size: 10vw;
+  }
+}

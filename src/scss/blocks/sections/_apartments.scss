@@ -1,0 +1,107 @@
+.apartments {
+  &__inner {
+    position: relative;
+
+    @include add-decor-number('III', left) {
+      --decor-number-translateY: -68px;
+    };
+  }
+
+  &__title {
+    @extend %title;
+    margin-bottom: 88px;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 30px;
+  }
+
+  &__card {
+    position: relative;
+    display: block;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      z-index: 2;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg,
+          transparent 0%,
+          $color-dark 100%);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      z-index: 3;
+      inset: 15px;
+      border: 3px double rgba(255, 255, 255, 0.4);
+      opacity: 0;
+      transition: opacity 0.2s ease-in;
+    }
+  }
+
+  &__card-image {
+    z-index: -1;
+    width: 100%;
+    transition: transform .2s ease;
+  }
+
+  &__card-title {
+    @extend %font-main-400;
+    position: absolute;
+    z-index: 4;
+    left: 50px;
+    right: 30px;
+    bottom: 44px;
+    font-size: 24px;
+    line-height: 1.17;
+  }
+
+  &__card:hover {
+    &::after {
+      opacity: 1;
+    }
+
+    & .apartments__card-image {
+      transform: scale(1.1);
+      filter: contrast(1.1) brightness(1.2) saturate(1.2);
+    }
+  }
+}
+
+@include breakpoint-down(xl) {
+  .apartments {
+    &__title {
+      margin-bottom: 7.3vw;
+    }
+
+    &__card-title {
+      left: 9.25%;
+      right: 9.25%;
+      bottom: 13.75%;
+      font-size: 2vw;
+    }
+  }
+}
+
+@include breakpoint-down(md) {
+  .apartments {
+    &__grid {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+      gap: 30px;
+    }
+
+    &__card-title {
+      font-size: 3.6vw;
+    }
+  }
+}

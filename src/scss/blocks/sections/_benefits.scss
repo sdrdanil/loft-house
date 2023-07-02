@@ -1,0 +1,76 @@
+.benefits {
+  margin: 0 auto;
+  padding: 120px 0 114px;
+  overflow: hidden;
+
+  &__inner {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, max-content);
+    justify-items: center;
+    column-gap: 70px;
+    justify-content: center;
+
+    @include add-decor-number('II', right) {
+      --decor-number-translateY: -147px;
+    }
+  }
+
+  &__item {
+    // margin-bottom: 53px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &--bench {
+      max-width: 193px;
+    }
+
+    &--building {
+      max-width: 133px;
+    }
+
+    &--fountain {
+      max-width: 134px;
+    }
+
+    &--bicycle {
+      max-width: 124px;
+    }
+  }
+
+  &__icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 53px;
+  }
+
+  &__text {
+    @extend %font-secondary;
+    font-size: 20px;
+    line-height: 27px;
+    text-align: center;
+  }
+}
+
+@include breakpoint-down(lg) {
+  .benefits {
+    padding: 100px 0;
+
+    &__inner {
+      grid-template-columns: repeat(2, max-content);
+      row-gap: 35px;
+    }
+  }
+}
+
+@include breakpoint-down(sm) {
+  .benefits {
+    padding: 60px 0;
+
+    &__inner {
+      grid-template-columns: repeat(1, max-content);
+      row-gap: 15px;
+    }
+  }
+}

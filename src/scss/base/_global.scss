@@ -1,0 +1,59 @@
+body {
+  min-height: 100vh;
+  background-color: $color-dark;
+  color: $color-white;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+footer {
+  flex: 0 1 auto;
+}
+
+a {
+  color: $color-white;
+  transition: color $link-transition;
+
+
+  &:hover {
+    color: $color-accent;
+  }
+}
+
+.container {
+  width: 1140px;
+  margin: 0 auto;
+  padding: 0 15px;
+
+  @include breakpoint-down(xl) {
+    width: 95%;
+  }
+}
+
+.visually-hidden {
+  @extend %visually-hidden;
+}
+
+.no-scroll {
+  @include breakpoint-down(md) {
+    overflow: hidden;
+  }
+}
+
+// .header,
+// .hero,
+// .benefits,
+// .apartments,
+// .cta,
+// .video,
+// .section-map,
+// .feedback,
+// .footer,
+.none {
+  display: none !important;
+}

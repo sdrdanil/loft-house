@@ -1,0 +1,68 @@
+.footer {
+  padding: 72px 0 50px;
+  background: $color-background-accent;
+
+  &__inner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 45px $global-columns-gap;
+  }
+
+  &__logo {
+    position: relative;
+    top: -12px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  &__item {
+    @extend %font-main-400;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.05em;
+    color: $color-white;
+    white-space: nowrap;
+  }
+
+  &__link {
+    &--accent {
+      @extend %font-main-700;
+      color: $color-accent;
+    }
+  }
+
+  &__socials {
+    padding-top: 20px;
+  }
+}
+
+@include breakpoint-down(lg) {
+  .footer {
+    padding: 36px 0 25px;
+
+    &__inner {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+@include breakpoint-down(sm) {
+  .footer {
+    padding: 36px 0 25px;
+
+    &__inner {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    &__list {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 15px 25px;
+    }
+  }
+}

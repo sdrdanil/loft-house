@@ -1,0 +1,63 @@
+.form {
+  &__input {
+    min-height: 50px;
+    padding: 12px;
+    color: $color-white;
+    text-align: center;
+    background-color: rgba(#fff, .2);
+    transition: background-color .2s ease;
+
+    @include fix-styling-autofill($color-white);
+
+    &::placeholder {
+      @extend %font-main-400;
+      font-size: 13px;
+      line-height: 16px;
+      color: $color-placeholder;
+    }
+
+    &:focus {
+      background-color: rgba(#fff, .3);
+    }
+  }
+
+  &__text {
+    @extend %font-main-400;
+    font-size: 13px;
+    line-height: 16px;
+    color: $color-muted;
+    text-align: center;
+  }
+
+  &__button {
+    padding: 12px;
+    @extend %font-main-700;
+    font-size: 16px;
+    line-height: 27px;
+    text-align: center;
+    color: $color-white;
+    background-color: $color-accent;
+    transition: background-color .2s ease;
+
+    &:focus-visible {
+      outline: 1px solid white;
+      background-color: saturate($color: $color-accent, $amount: 20%);
+    }
+
+    &:hover {
+      background-color: saturate($color: $color-accent, $amount: 20%);
+    }
+  }
+}
+
+@include breakpoint-down(lg) {
+  .form {
+    &__order-lg-down {
+      @for $i from 1 through 4 {
+        &--#{$i} {
+          order: $i;
+        }
+      }
+    }
+  }
+}
